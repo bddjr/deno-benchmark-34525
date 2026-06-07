@@ -1,3 +1,6 @@
+CPU: i5-10600KF  
+RAM: 32G×2 DDR4 3333MT/s  
+
 ```
 PS D:\code\bddjr\deno-benchmark-34525> .\benchmark.bat
 
