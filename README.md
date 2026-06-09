@@ -57,3 +57,28 @@ latin1Slice 50MB-latin1: 7.684ms
 D:\code\bddjr\deno-benchmark-34525>node test.mjs hexSlice 50MB-latin1
 hexSlice 50MB-latin1: 39.209ms
 ```
+
+---
+
+## Setup
+
+```
+git clone --depth 1 https://github.com/bddjr/deno-benchmark-34525
+cd deno-benchmark-34525
+
+curl.exe --ssl-revoke-best-effort -Lo deno-2.8.1.zip https://dl.deno.land/release/v2.8.1/deno-x86_64-pc-windows-msvc.zip
+tar.exe xf deno-2.8.1.zip
+ren deno.exe deno-2.8.1.exe
+
+git init deno-pr-34525
+cd deno-pr-34525
+git remote add origin https://github.com/denoland/deno.git
+git fetch origin pull/34525/head:pr-34525
+git checkout pr-34525
+git submodule update --init --recursive
+cargo test unit_node::buffer_test --release
+cd ..
+copy deno-pr-34525\target\release\deno.exe deno-pr34525-release.exe
+
+.\benchmark.bat
+```
